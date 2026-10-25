@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contact Us | Dealerships</title>
+    <title>Contact Us | Best Cars Dealership</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -13,50 +13,106 @@
         rel="stylesheet"
     >
 
-    <!-- Project stylesheet -->
+    <!-- Project CSS -->
     <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .contact-header {
+            background-color: #0d6efd;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contact-section {
+            padding: 40px 0;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 25px;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-image {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .contact-card h2 {
+            color: #0d6efd;
+            margin-bottom: 20px;
+        }
+
+        .contact-card p {
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-card a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light"
-         style="background-color: darkturquoise; min-height: 80px;">
-
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
 
             <a class="navbar-brand fw-bold" href="/">
-                Dealerships
+                Best Cars Dealership
             </a>
 
             <button
                 class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarText"
-                aria-controls="navbarText"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
                 aria-expanded="false"
-                aria-label="Toggle navigation">
-
+                aria-label="Toggle navigation"
+            >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarText">
-
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">About Us</a>
+                        <a class="nav-link" href="/static/About.html">
+                            About Us
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active"
-                           aria-current="page"
-                           href="/contact">
+                        <a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="/static/Contact.html"
+                        >
                             Contact Us
                         </a>
                     </li>
@@ -66,110 +122,84 @@
         </div>
     </nav>
 
-    <!-- Contact Us Section -->
-    <main class="container my-5">
+    <!-- Page Header -->
+    <header class="contact-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p class="mb-0">
+                We are here to help you find your perfect car.
+            </p>
+        </div>
+    </header>
 
-        <section class="card shadow-sm border-0 p-3 p-md-5">
-
-            <div class="text-center mb-4">
-                <h1 class="display-5 fw-bold">Contact Us</h1>
-
-                <p class="lead">
-                    Have a question about our dealerships or services?
-                    Our team is here to help.
-                </p>
-            </div>
-
-            <div class="row align-items-center g-4">
-
-                <!-- Contact Image -->
-                <div class="col-12 col-md-6">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80"
-                        alt="Customer support team ready to assist"
-                        class="img-fluid rounded shadow-sm"
-                        style="width: 100%; max-height: 380px; object-fit: cover;"
-                    >
-
-                </div>
+    <!-- Contact Information -->
+    <main class="contact-section">
+        <div class="container">
+            <div class="row g-4 align-items-stretch">
 
                 <!-- Contact Details -->
-                <div class="col-12 col-md-6">
+                <div class="col-md-6">
+                    <section class="contact-card">
+                        <h2>Get in Touch</h2>
 
-                    <h2 class="h3 mb-4">Get in Touch</h2>
-
-                    <div class="mb-4">
-                        <h3 class="h5">Email</h3>
                         <p>
-                            <a href="mailto:support@example.com">
-                                support@example.com
+                            Welcome to Best Cars Dealership. Please contact
+                            our team if you have questions about our vehicles,
+                            dealership locations, or customer services.
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            <a href="mailto:contact@bestcars.example">
+                                contact@bestcars.example
                             </a>
                         </p>
-                    </div>
 
-                    <div class="mb-4">
-                        <h3 class="h5">Phone</h3>
                         <p>
-                            <a href="tel:+18005550199">
-                                +1 (800) 555-0199
+                            <strong>Phone:</strong>
+                            <a href="tel:+15550100100">
+                                +1 555-010-0100
                             </a>
                         </p>
-                    </div>
 
-                    <div class="mb-4">
-                        <h3 class="h5">Address</h3>
                         <p>
-                            24 Innovation Way,<br>
-                            Austin, TX 78701,<br>
-                            United States
+                            <strong>Address:</strong>
+                            123 Main Street, Wichita, Kansas 67202, USA
                         </p>
-                    </div>
 
-                    <div class="mb-4">
-                        <h3 class="h5">Business Hours</h3>
                         <p>
-                            Monday – Friday: 9:00 AM – 6:00 PM<br>
-                            Saturday – Sunday: Closed
+                            <strong>Business Hours:</strong><br>
+                            Monday–Friday: 9:00 AM–6:00 PM<br>
+                            Saturday: 10:00 AM–4:00 PM<br>
+                            Sunday: Closed
                         </p>
-                    </div>
-
+                    </section>
                 </div>
+
+                <!-- Dealership Image -->
+                <div class="col-md-6">
+                    <img
+                        class="contact-image"
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+                        alt="Modern business building"
+                    >
+                </div>
+
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-4 mt-5"
-            style="background-color: #f2f2f2;">
-
+    <footer class="bg-dark text-white text-center py-3">
         <p class="mb-0">
-            &copy; 2026 Dealerships. All rights reserved.
+            &copy; 2026 Best Cars Dealership. All rights reserved.
         </p>
-
     </footer>
 
-    <!-- Bootstrap JavaScript -->
     <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
 
 </body>
 </html>
 ```
-  <div class="card" style="width: 70%; margin: 4rem auto; padding: 2rem;">
-    <h1>Contact Us</h1>
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <img src="/static/contactus.png" alt="Contact us" class="img-fluid rounded" />
-      </div>
-      <div class="col-md-6">
-        <p><strong>Email:</strong> support@ibm.com</p>
-        <p><strong>Phone:</strong> +1 (800) 555-0199</p>
-        <p><strong>Address:</strong> 24 Innovation Way, Austin, TX 78701</p>
-        <p><strong>Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
