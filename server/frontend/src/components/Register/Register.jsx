@@ -1,186 +1,144 @@
 ```jsx
-import React, { useState } from 'react';
-import './Register.css';
-import Header from '../Header/Header';
+import React, { useState } from "react";
 
-const Register = () => {
+function Register() {
   const [formData, setFormData] = useState({
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    userName: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormData((current) => ({
-      ...current,
+    setFormData((previousData) => ({
+      ...previousData,
       [name]: value,
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError('');
-    setSuccess('');
-
-    if (
-      !formData.username.trim() ||
-      !formData.firstName.trim() ||
-      !formData.lastName.trim() ||
-      !formData.email.trim() ||
-      !formData.password
-    ) {
-      setError('Please fill in all five fields.');
-      return;
-    }
-
-    setLoading(true);
+    setMessage("");
 
     try {
-      const response = await fetch(
-        `${window.location.origin}/djangoapp/register`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: formData.username.trim(),
-            first_name: formData.firstName.trim(),
-            last_name: formData.lastName.trim(),
-            email: formData.email.trim(),
-            password: formData.password,
-          }),
-        }
-      );
+      const response = await fetch("/djangoapp/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
 
-      if (!response.ok || data.status >= 400 || data.error) {
-        throw new Error(data.error || 'Registration failed. Please try again.');
+      if (response.ok) {
+        setMessage("Registration successful!");
+        setFormData({
+          userName: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+        });
+      } else {
+        setMessage(data.message || "Registration failed. Please try again.");
       }
-
-      sessionStorage.setItem(
-        'username',
-        data.userName || formData.username
-      );
-
-      setSuccess('Registration successful!');
-
-      window.setTimeout(() => {
-        window.location.href = '/';
-      }, 1000);
-    } catch (err) {
-      setError(err.message || 'Unable to register. Please try again.');
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      setMessage("Unable to connect to the server. Please try again.");
     }
   };
 
   return (
-    <div>
-      <Header />
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow">
+            <div className="card-body">
+              <h2 className="text-center mb-4">Sign-up</h2>
 
-      <main className="register_container">
-        <h2 className="header">Sign Up</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    name="userName"
+                    className="form-control"
+                    placeholder="Username"
+                    value={formData.userName}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-        <form onSubmit={handleSubmit} className="submit_panel">
-          <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            className="input_field"
-            type="text"
-            name="username"
-            value={formData.username}
-            placeholder="Enter username"
-            onChange={handleChange}
-            autoComplete="username"
-            required
-          />
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    name="firstName"
+                    className="form-control"
+                    placeholder="First Name"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-          <label htmlFor="firstName">First Name</label>
-          <input
-            id="firstName"
-            className="input_field"
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            placeholder="Enter first name"
-            onChange={handleChange}
-            autoComplete="given-name"
-            required
-          />
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="form-control"
+                    placeholder="Last Name"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            id="lastName"
-            className="input_field"
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            placeholder="Enter last name"
-            onChange={handleChange}
-            autoComplete="family-name"
-            required
-          />
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            className="input_field"
-            type="email"
-            name="email"
-            value={formData.email}
-            placeholder="Enter email address"
-            onChange={handleChange}
-            autoComplete="email"
-            required
-          />
+                <div className="mb-3">
+                  <input
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            className="input_field"
-            type="password"
-            name="password"
-            value={formData.password}
-            placeholder="Enter password"
-            onChange={handleChange}
-            autoComplete="new-password"
-            required
-          />
+                <button type="submit" className="btn btn-primary w-100">
+                  Register
+                </button>
+              </form>
 
-          {error && (
-            <div className="alert alert-danger" role="alert">
-              {error}
+              {message && (
+                <div className="alert alert-info mt-3" role="status">
+                  {message}
+                </div>
+              )}
             </div>
-          )}
-
-          {success && (
-            <div className="alert alert-success" role="status">
-              {success}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            className="submit"
-            disabled={loading}
-          >
-            {loading ? 'Registering...' : 'Register'}
-          </button>
-        </form>
-      </main>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Register;
 ```
