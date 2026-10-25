@@ -1,18 +1,27 @@
-# coding-project-template
-# Cars Dealership – Full-Stack Development Capstone
+# fullstack_developer_capstone
 
-**Repository Name:** xrwvm-fullstack_developer_capstone
+**Repository name:** xrwvm-fullstack_developer_capstone
 
-**Project Name:** Cars Dealership – Full-Stack Development Capstone
+**Project name:** fullstack_developer_capstone
 
 ## Project Description
 
-This project is a full-stack web application for a car dealership business. It allows users to browse dealership locations, view dealer details, register and log in, submit dealership reviews, and explore customer feedback.
+This project is a full-stack car dealership application developed using Django and React. It allows users to browse dealerships, view dealer details and reviews, register and log in, and submit dealership reviews.
 
-## Technologies
+## Technologies Used
 
-- Frontend: React
-- Backend: Django and Python
-- Database: As configured in the project
-- Version Control: Git and GitHub
-- Deployment: As configured for the capstone
+- Python
+- Django
+- React
+- JavaScript
+- HTML and CSS
+- Git and GitHub
+
+## Features
+
+- Display all dealerships.
+- Filter dealerships by state.
+- View dealership details.
+- Register and log in to the application.
+- Submit and view dealership reviews.
+- Analyze review sentiment.
